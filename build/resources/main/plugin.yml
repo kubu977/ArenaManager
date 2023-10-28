@@ -1,0 +1,7 @@
+name: ArenaManager
+version: '1.0'
+main: org.arenamanager.arenamanager.ArenaManager
+api-version: '1.19'
+commands:
+  help:
+  am:
