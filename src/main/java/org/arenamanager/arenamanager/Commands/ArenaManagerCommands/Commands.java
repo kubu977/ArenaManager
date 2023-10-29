@@ -28,7 +28,7 @@ public class Commands implements CommandExecutor {
                 String worldName = args[1];
 
                 if (this.config.worldExists(worldName)) {
-                    sender.sendMessage(ChatColor.RED + "This world already exists.");
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4This world already exists."));
                 } else {
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6Arena created"));
                     this.config.addWorldName(worldName);
@@ -38,7 +38,7 @@ public class Commands implements CommandExecutor {
                 }
             }
             else if (args[0].equalsIgnoreCase("create")){
-                sender.sendMessage(ChatColor.RED + "You need to specify a world name. Usage: /am create <name>");
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4You need to specify a world name. Usage: /am create <name>"));
             }
             //DeleteCommand
             else if (args.length >= 2 && args[0].equalsIgnoreCase("delete")) {
@@ -51,11 +51,11 @@ public class Commands implements CommandExecutor {
 
                     //Delete SWM world
                 } else {
-                    sender.sendMessage(ChatColor.RED + "This world does not exist.");
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4This world does not exist."));
                 }
             }
             else if (args[0].equalsIgnoreCase("delete")){
-                sender.sendMessage(ChatColor.RED + "You need to specify a world name. Usage: /am delete <name>");
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&4You need to specify a world name. Usage: /am delete <name>"));
 
             }
             //ReloadCommand
