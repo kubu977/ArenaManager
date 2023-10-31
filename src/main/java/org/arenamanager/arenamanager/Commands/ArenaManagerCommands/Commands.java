@@ -11,9 +11,11 @@ public class Commands implements CommandExecutor {
     ArenaManager plugin;
     private final ConfigManager config;
 
+
     public Commands(ArenaManager plugin) {
         this.plugin = plugin;
         this.config = this.plugin.getConfigManager();
+
     }
 
     @Override
@@ -23,7 +25,9 @@ public class Commands implements CommandExecutor {
             if (args.length == 0) {
                 sender.sendMessage("Type /help for Arena Manager commands.");
             }
-            //CreateCommand
+
+
+            //Create Command
             else if (args.length >= 2 && args[0].equalsIgnoreCase("create")) {
                 String worldName = args[1];
 
@@ -40,7 +44,9 @@ public class Commands implements CommandExecutor {
             else if (args[0].equalsIgnoreCase("create")){
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&',"&4You need to specify a world name. Usage: /am create <name>"));
             }
-            //DeleteCommand
+
+
+            //Delete Command
             else if (args.length >= 2 && args[0].equalsIgnoreCase("delete")) {
                 String worldName = args[1];
 
@@ -58,12 +64,22 @@ public class Commands implements CommandExecutor {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&4You need to specify a world name. Usage: /am delete <name>"));
 
             }
-            //ReloadCommand
+
+
+            //Reload Command
             else if (args.length == 1 && args[0].equalsIgnoreCase("reload"))
             {
                 this.config.reloadConfig();
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&',"&6Config Reloaded!"));
             }
+
+
+            //List Command
+            else if (args.length == 1 && args[0].equalsIgnoreCase("list")) {
+
+
+            }
+
             //Else lol
             else{
                 sender.sendMessage(ChatColor.RED + "Invalid command. Type /help for Arena Manager commands.");
