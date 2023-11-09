@@ -22,6 +22,7 @@ public class TabComplete implements TabCompleter {
                     argList.add("delete");
                     argList.add("list");
                     argList.add("reload");
+                    argList.add("list");
                 }
                 return argList;
             }

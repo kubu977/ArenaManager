@@ -1,6 +1,7 @@
 package org.arenamanager.arenamanager;
 
 import org.arenamanager.arenamanager.Commands.ArenaManagerCommands.Commands;
+import org.arenamanager.arenamanager.Commands.ArenaManagerCommands.CommandsManager;
 import org.arenamanager.arenamanager.Commands.OtherCommands.HelpCommand;
 import org.arenamanager.arenamanager.Configs.ConfigManager;
 import org.arenamanager.arenamanager.TabComplete.TabComplete;
@@ -9,11 +10,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class ArenaManager extends JavaPlugin {
 
     private ConfigManager configManager;
+    private CommandsManager commandsManager;
 
     @Override
     public void onEnable() {
         //Config
         this.configManager = new ConfigManager(this);
+
+        //Register classes
+        this.commandsManager = new CommandsManager(this);
 
         //Commands
         this.getCommand("help").setExecutor(new HelpCommand());
@@ -32,5 +37,9 @@ public final class ArenaManager extends JavaPlugin {
 
     public ConfigManager getConfigManager() {
         return this.configManager;
+    }
+
+    public CommandsManager getCommandsManager(){
+        return this.commandsManager;
     }
 }

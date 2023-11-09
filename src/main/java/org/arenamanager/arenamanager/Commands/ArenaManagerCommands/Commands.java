@@ -7,13 +7,16 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import java.util.List;
+
 public class Commands implements CommandExecutor {
     ArenaManager plugin;
     private final ConfigManager config;
-
+    private final CommandsManager manager;
 
     public Commands(ArenaManager plugin) {
         this.plugin = plugin;
+        this.manager = this.plugin.getCommandsManager();
         this.config = this.plugin.getConfigManager();
 
     }
@@ -67,8 +70,7 @@ public class Commands implements CommandExecutor {
 
 
             //Reload Command
-            else if (args.length == 1 && args[0].equalsIgnoreCase("reload"))
-            {
+            else if (args.length == 1 && args[0].equalsIgnoreCase("reload")){
                 this.config.reloadConfig();
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&',"&6Config Reloaded!"));
             }
@@ -76,8 +78,17 @@ public class Commands implements CommandExecutor {
 
             //List Command
             else if (args.length == 1 && args[0].equalsIgnoreCase("list")) {
+                List<String> worldNames = this.manager.getWorldNames();
 
+                if (worldNames.isEmpty()) {
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&cNo worlds created. Use /am create <name> to create some."));
+                } else {
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&6List of worlds:"));
 
+                    for (String worldName : worldNames) {
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7- " + worldName));
+                    }
+                }
             }
 
             //Else lol
