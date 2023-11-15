@@ -2,6 +2,7 @@ package org.arenamanager.arenamanager.Commands.ArenaManagerCommands;
 
 import org.arenamanager.arenamanager.ArenaManager;
 import org.arenamanager.arenamanager.Configs.ConfigManager;
+import org.arenamanager.arenamanager.Langs.LangManager;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,11 +14,13 @@ public class Commands implements CommandExecutor {
     ArenaManager plugin;
     private final ConfigManager config;
     private final CommandsManager manager;
+    private final LangManager langManager;
 
     public Commands(ArenaManager plugin) {
         this.plugin = plugin;
         this.manager = this.plugin.getCommandsManager();
         this.config = this.plugin.getConfigManager();
+        this.langManager = this.plugin.getLangManager();
 
     }
 
@@ -89,6 +92,11 @@ public class Commands implements CommandExecutor {
                         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7- " + worldName));
                     }
                 }
+            }
+
+            //Lang Command
+            else if(args.length >= 2 && args[0].equalsIgnoreCase("lang")){
+
             }
 
             //Else lol
